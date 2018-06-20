@@ -141,7 +141,7 @@ curl $ESCREDENTIALS -s -XPUT $ESHOST/index -H 'Content-Type: application/json' -
 				},
 				"url": {
 					"type": "keyword",
-					"index": "false",
+					"index": "true",
 					"store": true
 				}
 			}
