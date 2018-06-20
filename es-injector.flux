@@ -38,4 +38,7 @@ streams:
     to: "status"
     grouping:
       type: FIELDS
-      args: ["url"]
+      customClass:
+        className: "com.digitalpebble.stormcrawler.util.URLStreamGrouping"
+          constructorArgs:
+            - "byDomain"
