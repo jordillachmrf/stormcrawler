@@ -10,8 +10,8 @@ config:
   topology.max.spout.pending: 100
   topology.debug: false
   fetcher.threads.number: 50
-  fetcher.threads.per.queue: 2
-  fetcher.server.delay: 0.2
+  fetcher.threads.per.queue: 1
+  fetcher.server.delay: 0.5
 
   # give 2gb to the workers
   worker.heap.memory.mb: 1024

@@ -18,7 +18,7 @@ spouts:
     className: "com.digitalpebble.stormcrawler.spout.MemorySpout"
     parallelism: 1
     constructorArgs:
-      - ["http://quotes.toscrape.com/"]
+      - ["http://quotes.toscrape.com/","http://eldiariodechihuahua.mx/"]
 
 bolts:
   - id: "partitioner"
@@ -26,22 +26,22 @@ bolts:
     parallelism: 1
   - id: "fetcher"
     className: "com.digitalpebble.stormcrawler.bolt.FetcherBolt"
-    parallelism: 1
+    parallelism: 10
   - id: "sitemap"
     className: "com.digitalpebble.stormcrawler.bolt.SiteMapParserBolt"
-    parallelism: 1
+    parallelism: 4
   - id: "parse"
     className: "com.digitalpebble.stormcrawler.bolt.JSoupParserBolt"
-    parallelism: 1
+    parallelism: 40
   - id: "index"
     className: "com.digitalpebble.stormcrawler.elasticsearch.bolt.IndexerBolt"
-    parallelism: 1
+    parallelism: 8
   - id: "status"
     className: "com.digitalpebble.stormcrawler.elasticsearch.persistence.StatusUpdaterBolt"
-    parallelism: 1
+    parallelism: 2
   - id: "status_metrics"
     className: "com.digitalpebble.stormcrawler.elasticsearch.metrics.StatusMetricsBolt"
-    parallelism: 1
+    parallelism: 2
 
 streams:
   - from: "spout"
