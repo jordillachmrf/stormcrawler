@@ -40,5 +40,5 @@ streams:
       type: CUSTOM
       customClass:
         className: "com.digitalpebble.stormcrawler.util.URLStreamGrouping"
-          constructorArgs:
-            - "byDomain"
+        constructorArgs:
+          - "byDomain"
