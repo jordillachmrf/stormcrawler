@@ -21,22 +21,22 @@ spouts:
 bolts:
   - id: "partitioner"
     className: "com.digitalpebble.stormcrawler.bolt.URLPartitionerBolt"
-    parallelism: 1
+    parallelism: 2
   - id: "fetcher"
     className: "com.digitalpebble.stormcrawler.bolt.FetcherBolt"
-    parallelism: 10
+    parallelism: 2
   - id: "sitemap"
     className: "com.digitalpebble.stormcrawler.bolt.SiteMapParserBolt"
     parallelism: 2
   - id: "parse"
     className: "com.digitalpebble.stormcrawler.bolt.JSoupParserBolt"
-    parallelism: 4
+    parallelism: 6
   - id: "index"
     className: "com.digitalpebble.stormcrawler.elasticsearch.bolt.IndexerBolt"
     parallelism: 2
   - id: "status"
     className: "com.digitalpebble.stormcrawler.elasticsearch.persistence.StatusUpdaterBolt"
-    parallelism: 2
+    parallelism: 4
   - id: "status_metrics"
     className: "com.digitalpebble.stormcrawler.elasticsearch.metrics.StatusMetricsBolt"
     parallelism: 2
@@ -46,11 +46,11 @@ streams:
     to: "partitioner"
     grouping:
       type: SHUFFLE
-      
+
   - from: "spout"
     to: "status_metrics"
     grouping:
-      type: SHUFFLE     
+      type: SHUFFLE
 
   - from: "partitioner"
     to: "fetcher"

@@ -16,7 +16,7 @@ curl $ESCREDENTIALS -s -XPUT $ESHOST/status -H 'Content-Type: application/json' 
 	"settings": {
 		"index": {
 			"number_of_shards": 10,
-			"number_of_replicas": 1,
+			"number_of_replicas": 0,
 			"refresh_interval": "5s"
 		}
 	},
@@ -34,6 +34,9 @@ curl $ESCREDENTIALS -s -XPUT $ESHOST/status -H 'Content-Type: application/json' 
 			"_source": {
 				"enabled": true
 			},
+			"_all": {
+                "enabled": false
+            },
 			"properties": {
 				"nextFetchDate": {
 					"type": "date",
@@ -72,6 +75,7 @@ curl $ESCREDENTIALS -s -XPOST $ESHOST/_template/storm-metrics-template -H 'Conte
   },
   "mappings": {
     "datapoint": {
+      "_all":            { "enabled": false },
       "_source":         { "enabled": true },
       "properties": {
           "name": {
@@ -124,6 +128,9 @@ curl $ESCREDENTIALS -s -XPUT $ESHOST/index -H 'Content-Type: application/json' -
 			"_source": {
 				"enabled": false
 			},
+			"_all": {
+                "enabled": false
+            },
 			"properties": {
 				"content": {
 					"type": "text",
