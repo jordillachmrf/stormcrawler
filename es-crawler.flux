@@ -24,16 +24,16 @@ bolts:
     parallelism: 1
   - id: "fetcher"
     className: "com.digitalpebble.stormcrawler.bolt.FetcherBolt"
-    parallelism: 20
+    parallelism: 10
   - id: "sitemap"
     className: "com.digitalpebble.stormcrawler.bolt.SiteMapParserBolt"
-    parallelism: 4
+    parallelism: 2
   - id: "parse"
     className: "com.digitalpebble.stormcrawler.bolt.JSoupParserBolt"
     parallelism: 4
   - id: "index"
     className: "com.digitalpebble.stormcrawler.elasticsearch.bolt.IndexerBolt"
-    parallelism: 4
+    parallelism: 2
   - id: "status"
     className: "com.digitalpebble.stormcrawler.elasticsearch.persistence.StatusUpdaterBolt"
     parallelism: 2
