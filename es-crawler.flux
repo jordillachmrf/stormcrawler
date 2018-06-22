@@ -25,18 +25,15 @@ bolts:
   - id: "fetcher"
     className: "com.digitalpebble.stormcrawler.bolt.FetcherBolt"
     parallelism: 2
-  - id: "sitemap"
-    className: "com.digitalpebble.stormcrawler.bolt.SiteMapParserBolt"
-    parallelism: 2
   - id: "parse"
     className: "com.digitalpebble.stormcrawler.bolt.JSoupParserBolt"
-    parallelism: 6
+    parallelism: 8
   - id: "index"
     className: "com.digitalpebble.stormcrawler.elasticsearch.bolt.IndexerBolt"
     parallelism: 2
   - id: "status"
     className: "com.digitalpebble.stormcrawler.elasticsearch.persistence.StatusUpdaterBolt"
-    parallelism: 4
+    parallelism: 2
   - id: "status_metrics"
     className: "com.digitalpebble.stormcrawler.elasticsearch.metrics.StatusMetricsBolt"
     parallelism: 2
@@ -59,11 +56,6 @@ streams:
       args: ["key"]
 
   - from: "fetcher"
-    to: "sitemap"
-    grouping:
-      type: LOCAL_OR_SHUFFLE
-
-  - from: "sitemap"
     to: "parse"
     grouping:
       type: LOCAL_OR_SHUFFLE
@@ -74,13 +66,6 @@ streams:
       type: LOCAL_OR_SHUFFLE
 
   - from: "fetcher"
-    to: "status"
-    grouping:
-      type: FIELDS
-      args: ["url"]
-      streamId: "status"
-
-  - from: "sitemap"
     to: "status"
     grouping:
       type: FIELDS

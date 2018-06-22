@@ -70,19 +70,19 @@
     </appenders>
     <loggers>
 
-        <Logger name="org.apache.storm.logging.filters.AccessLoggingFilter" level="info" additivity="false">
+        <Logger name="org.apache.storm.logging.filters.AccessLoggingFilter" level="warn" additivity="false">
             <AppenderRef ref="WEB-ACCESS"/>
             <AppenderRef ref="syslog"/>
         </Logger>
-        <Logger name="org.apache.storm.logging.ThriftAccessLogger" level="info" additivity="false">
+        <Logger name="org.apache.storm.logging.ThriftAccessLogger" level="warn" additivity="false">
             <AppenderRef ref="THRIFT-ACCESS"/>
             <AppenderRef ref="syslog"/>
         </Logger>
-        <Logger name="org.apache.storm.metric.LoggingClusterMetricsConsumer" level="info" additivity="false">
+        <Logger name="org.apache.storm.metric.LoggingClusterMetricsConsumer" level="warn" additivity="false">
             <appender-ref ref="METRICS"/>
         </Logger>
 
-        <logger name="c.d.s.b.JSoupParserBolt" level="info"/>
+        <logger name="com.digitalpebble.stormcrawler.bolt.JSoupParserBolt" level="info"/>
 
         <root level="warn"> <!-- We log everything -->
             <appender-ref ref="A1"/>
