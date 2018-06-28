@@ -44,7 +44,7 @@ config:
   # these are also persisted for the parent document (see below)
   # metadata.transfer:
   # - customMetadataName
-  metadata.track.path: true
+  metadata.track.path: false
   metadata.track.depth: true
   # lists the metadata to persist to storage
   # these are not transfered to the outlinks
