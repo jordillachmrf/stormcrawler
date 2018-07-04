@@ -13,7 +13,7 @@ config:
   topology.kryo.register:
     - com.digitalpebble.stormcrawler.Metadata
 
-  fetcher.threads.number: 80
+  fetcher.threads.number: 250
   fetcher.server.delay: 0.2
   # A FetchQueue can also be used by more than one FetchingThread at a time (in which case fetcher.server.min.delay is used),
   # based on the value of fetcher.threads.per.queue.
@@ -37,7 +37,7 @@ config:
   fetcher.server.delay.force: false
 
   # give 2gb to the workers
-  worker.heap.memory.mb: 1024
+  worker.heap.memory.mb: 2048
 
   # metadata to transfer to the outlinks
   # used by Fetcher for redirections, sitemapparser, etc...
