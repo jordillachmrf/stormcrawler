@@ -1,6 +1,15 @@
 {
   "com.digitalpebble.stormcrawler.parse.ParseFilters": [
     {
+      "class": "com.digitalpebble.stormcrawler.parse.filter.LinkParseFilter",
+      "name": "LinkParseFilter",
+      "params": {
+        "pattern": "//LINK[@rel=\"next\"]/@href",
+        "pattern2": "//LINK[@rel=\"prev\"]/@href",
+        "pattern3": "//LINK[@rel=\"previous\"]/@href"
+      }
+    },
+    {
       "class": "com.digitalpebble.stormcrawler.parse.filter.XPathFilter",
       "name": "XPathFilter",
       "params": {
